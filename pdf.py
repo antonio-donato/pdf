@@ -7,24 +7,11 @@ reader1 = PyPDF2.PdfFileReader(pdfFile1)
 pdfFile2 = open("test.pdf", "wb")
 writer1 = PyPDF2.PdfFileWriter()
 
-pag_0 = reader1.getPage(0)
-
-writer1.addPage(pag_0)
-writer1.addPage(pag_0)
-writer1.addPage(pag_0)
+for numeroPagina in range(reader1.numPages):
+    writer1.addPage(reader1.getPage(numeroPagina))
 
 writer1.write(pdfFile2)
-
-numPage = reader1.numPages
-print(numPage)
 
 pdfFile1.close()
 pdfFile2.close()
 
-pdfFile2 = open("test.pdf", "rb")
-reader2 = PyPDF2.PdfFileReader(pdfFile2)
-
-numPage = reader2.numPages
-print(numPage)
-
-pdfFile2.close()
