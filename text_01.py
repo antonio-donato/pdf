@@ -10,15 +10,19 @@ print()
 print("Digita la nuova stringa da sostituire:")
 stringSub = input()
 
-listaFile = os.listdir(cartella)
+#listaFile = os.listdir(cartella)
 
-for nomeFile in listaFile:
-    # fileDestinazione = open("C:/Workspace_git/Wingesfar/donant-testXXXX.cbl", "wt")
-    fileInput = open(nomeFile).read()
-    fileInput = fileInput.replace(stringSearch, stringSub)
-    fileOut = open(nomeFile, "wt")
-    fileOut.write(fileInput)
-    fileOut.close()
+for nomeFile in os.listdir(cartella):
+    valore = os.path.isfile(os.path.join(cartella, nomeFile))
+    print(valore)
+    if os.path.isfile(os.path.join(cartella, nomeFile)):
+        print('file: {0}'.format(nomeFile))
+
+        fileInput = open(nomeFile).read()
+        fileInput = fileInput.replace(stringSearch, stringSub)
+        fileOut = open(nomeFile, "wt")
+        fileOut.write(fileInput)
+        fileOut.close()
 
 #with open("C:/Workspace_git/Wingesfar/gesm0010.cbl", "rt") as myfile:
 #    for myline in myfile:
