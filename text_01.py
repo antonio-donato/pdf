@@ -14,22 +14,16 @@ stringSub = input()
 
 for nomeFile in os.listdir(cartella):
     valore = os.path.isfile(os.path.join(cartella, nomeFile))
-    print(valore)
-    if os.path.isfile(os.path.join(cartella, nomeFile)):
+
+    if os.path.isfile(os.path.join(cartella, nomeFile)) and nomeFile.upper().endswith(".CBL"):
         print('file: {0}'.format(nomeFile))
 
-        fileInput = open(nomeFile).read()
-        fileInput = fileInput.replace(stringSearch, stringSub)
-        fileOut = open(nomeFile, "wt")
-        fileOut.write(fileInput)
-        fileOut.close()
+        fileInput = open(os.path.join(cartella, nomeFile), "rt")
+        data = fileInput.read()
+        data.replace(stringSearch, stringSub)
+        fileInput.close()
 
-#with open("C:/Workspace_git/Wingesfar/gesm0010.cbl", "rt") as myfile:
-#    for myline in myfile:
-#
-#        if myline.find("WG-2703") != -1:
-#            myline = myline.replace("WG-2703", "CIAONE!")
-#
-#        fileDestinazione.writelines(myline)
-#
-#fileDestinazione.close()
+        #fileInput = fileInput.replace(stringSearch, stringSub)
+        fileOut = open(os.path.join(cartella, nomeFile), "wt")
+        fileOut.write(data)
+        fileOut.close()
