@@ -13,7 +13,7 @@ print("Digita la nuova stringa da sostituire:")
 # solo per test
 cartella = "C:\\Workspace_git\\Wingesfar"
 stringSearch = "56821C"
-stringSub = "PIPPOOOO!!!"
+stringSub = "Python!!!"
 contatore = 0
 errori = 0
 
@@ -29,11 +29,13 @@ for nomeFile in os.listdir(cartella):
 
         try:
             data = fileInput.read()
-            data.replace(stringSearch, stringSub)
+            data1 = data.replace(stringSearch, stringSub)
+            if data != data1:
+                print(data1)
             fileInput.close()
 
             fileOut = open(os.path.join(cartella, nomeFile), "wt")
-            fileOut.write(data)
+            fileOut.write(data1)
             fileOut.close()
 
             contatore += 1
